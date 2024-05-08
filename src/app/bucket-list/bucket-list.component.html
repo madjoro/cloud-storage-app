@@ -7,8 +7,20 @@
 <h1>Bucket list</h1>
 <div class="container-fluid">
   <div>
-    <p>All buckets (2)</p>
-    <button>Create New Bucket</button>
+    <p>All buckets ({{ buckets.length }})</p>
+    <button (click)="toggleCreateExpanded()">Create New Bucket</button>
+    <div *ngIf="createExpanded">
+      <input
+        type="text"
+        placeholder="Enter bucket name"
+        [(ngModel)]="newBucketName"
+      />
+      <select [(ngModel)]="selectedLocation">
+        <option value="Kranj">Kranj</option>
+        <option value="Other Location">Other Location</option>
+      </select>
+      <button (click)="createBucket()">Create Bucket</button>
+    </div>
   </div>
 
   <table class="table">
