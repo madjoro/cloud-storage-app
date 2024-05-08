@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "BestStorage",
+    "location": "Kranj",
+    "storage": 123,
+    "files": [
+      {
+        "fileName": "abc.txt",
+        "lastModified": "2012-04-23T18:25:43.511Z",
+        "size": 123
+      }
+    ]
+  }
+]
