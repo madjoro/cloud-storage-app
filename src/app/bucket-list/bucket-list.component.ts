@@ -15,6 +15,8 @@ export class BucketListComponent implements OnInit {
   buckets: any[] = [];
   newBucketName: string = '';
   selectedLocation: string = '';
+  bucketDetailed: {} = {};
+
   //toggles
   selectedBucket: boolean = false;
   createExpanded: boolean = false;
@@ -35,8 +37,9 @@ export class BucketListComponent implements OnInit {
     this.createExpanded = !this.createExpanded;
   }
 
-  toggleSelectedBucket() {
+  toggleSelectedBucket(bucket: {}) {
     this.selectedBucket = !this.selectedBucket;
+    this.bucketDetailed = bucket;
   }
 
   createBucket() {

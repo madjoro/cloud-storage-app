@@ -31,10 +31,9 @@
         <th scope="col">Location</th>
       </tr>
     </thead>
-
     <tbody>
       <tr *ngFor="let bucket of buckets">
-        <td>{{ bucket.name }}</td>
+        <td (click)="toggleSelectedBucket(bucket)">{{ bucket.name }}</td>
         <td>{{ bucket.location }}</td>
       </tr>
     </tbody>
@@ -43,5 +42,5 @@
 
 <!-- Bucket details list -->
 <div *ngIf="selectedBucket">
-  <app-bucket-details [bucket]="selectedBucket"></app-bucket-details>
+  <app-bucket-details [bucket]="bucketDetailed"></app-bucket-details>
 </div>

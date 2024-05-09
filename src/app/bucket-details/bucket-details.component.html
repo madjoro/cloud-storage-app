@@ -1,1 +1,45 @@
-<p>bucket-details works!</p>
+<div class="container-fluid">
+  <h1>{{ bucket.name }}</h1>
+
+  <div>
+    <p>All files ({{ bucket.files.length }})</p>
+    <button>Delete Object</button>
+    <button>Upload Object</button>
+  </div>
+
+  <!-- nav tabs-->
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          (click)="toggleTab('files')"
+          id="tab1-tab"
+          data-toggle="tab"
+          role="tab"
+          href="#"
+          >Files</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="toggleTab('details')"
+          id="tab2-tab"
+          data-toggle="tab"
+          role="tab"
+          href="#"
+          >Details</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+        <table *ngIf="activeTab === 'files'" class="table"></table>
+      </div>
+      <div class="tab-pane fade" id="tab2" role="tabpanel">
+        <table *ngIf="activeTab === 'details'" class="table"></table>
+      </div>
+    </div>
+  </div>
+</div>
