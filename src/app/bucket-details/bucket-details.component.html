@@ -35,40 +35,11 @@
     </ul>
 
     <div *ngIf="activeTab === 'files'">
-      <div>
-        <p>All files ({{ bucket.files.length }})</p>
-        <button>Delete Object</button>
-        <input
-          id="fileInput"
-          type="file"
-          style="display: none"
-          (change)="onFileSelected($event)"
-        />
-        <input
-          type="button"
-          value="Upload Object"
-          onclick="document.getElementById('fileInput').click();"
-        />
-      </div>
-      <div class="tab-content">
-        <div
-          class="tab-pane"
-          [ngClass]="{ active: activeTab === 'files' }"
-          id="files-tab"
-        ></div>
-      </div>
       <app-file-list [files]="bucket.files"></app-file-list>
     </div>
 
     <div *ngIf="activeTab === 'details'">
-      <button>Delete Bucket</button>
-      <div class="tab-content">
-        <div
-          class="tab-pane"
-          [ngClass]="{ active: activeTab === 'details' }"
-          id="details-tab"
-        ></div>
-      </div>
+      <app-details></app-details>
     </div>
   </div>
 </div>

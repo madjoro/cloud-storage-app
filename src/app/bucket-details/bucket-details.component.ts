@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { BucketListService } from '../bucket-list/bucket-list.service';
 import { FileListComponent } from '../file-list/file-list.component';
-import { CommonModule } from '@angular/common';
+import { DetailsComponent } from '../details/details.component';
 
 @Component({
   selector: 'app-bucket-details',
   templateUrl: './bucket-details.component.html',
   styleUrls: ['./bucket-details.component.css'],
   standalone: true,
-  imports: [CommonModule, FileListComponent],
+  imports: [CommonModule, FileListComponent, DetailsComponent],
 })
 export class BucketDetailsComponent {
   @Input() bucket: any;
@@ -22,14 +24,5 @@ export class BucketDetailsComponent {
 
   toggleTab(tab: string) {
     this.activeTab = tab;
-  }
-
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      console.log('File Name:', file.name);
-      console.log('File Size:', file.size);
-      console.log('Last Modified:', file.lastModified);
-    }
   }
 }
