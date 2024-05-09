@@ -3,6 +3,7 @@ import { BucketListService } from './bucket-list.service';
 import { BucketDetailsComponent } from '../bucket-details/bucket-details.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-bucket-list',
@@ -44,8 +45,11 @@ export class BucketListComponent implements OnInit {
 
   createBucket() {
     const newBucket = {
+      id: uuid.v4(),
       name: this.newBucketName,
       location: this.selectedLocation,
+      storage: 0,
+      files: [],
     };
     this.bucketListService.addBucket(newBucket).subscribe(() => {
       this.loadBuckets(); //reload

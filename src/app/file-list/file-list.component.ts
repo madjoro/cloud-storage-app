@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as bootstrap from 'bootstrap';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-file-list',
@@ -25,13 +25,20 @@ export class FileListComponent {
 
   selectFile(index: number) {
     this.selectedFileIndex = index;
-    console.log(this.selectedFileIndex);
   }
 
-  deleteObject() {
-    if (this.selectedFileIndex !== -1) {
+  deleteObject(index: number) {
+    if (index !== -1) {
       const selectedFile = this.files[this.selectedFileIndex];
       console.log('Selected File:', selectedFile);
     }
+  }
+
+  openModal() {
+    const modalElement = document.getElementById(
+      'deleteObjectModal'
+    ) as HTMLElement;
+    const modal = new Modal(modalElement);
+    modal.show();
   }
 }

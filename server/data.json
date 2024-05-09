@@ -1,15 +1,40 @@
 [
   {
-    "id": 1,
+    "id": "71820cc0-661d-413b-8274-596c548dd818",
     "name": "BestStorage",
     "location": "Kranj",
     "storage": 123,
     "files": [
       {
+        "id": "22cc5dac-9e9b-4dfe-af10-c8dea70cfb27",
         "fileName": "abc.txt",
         "lastModified": "2012-04-23T18:25:43.511Z",
         "size": 123
+      },
+      {
+        "id": "23cc5dac-9e9b-4dfe-af10-c8dea70cfb27",
+        "fileName": "abcdef.txt",
+        "lastModified": "2012-04-23T18:25:43.511Z",
+        "size": 1232
       }
     ]
+  },
+  {
+    "name": "MegaStorage",
+    "location": "Kranj"
+  },
+  {
+    "id": "1b536bb6-b89f-4c13-bd80-5d028097667a",
+    "name": "TestStorage",
+    "location": "Kranj",
+    "storage": 0,
+    "files": []
+  },
+  {
+    "id": "ce1eb43a-f515-41b6-bd5c-d3c2ebd0a880",
+    "name": "asdasd",
+    "location": "Kranj",
+    "storage": 0,
+    "files": []
   }
 ]

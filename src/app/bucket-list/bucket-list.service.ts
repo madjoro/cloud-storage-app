@@ -18,13 +18,17 @@ export class BucketListService {
     return this.http.post<any>(this.baseUrl, bucket);
   }
 
-  updateBucket(bucketId: number, updatedBucket: any): Observable<any> {
-    const url = `${this.baseUrl}/${bucketId}`;
-    return this.http.put<any>(url, updatedBucket);
-  }
-
   deleteBucket(bucketId: number): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}`;
+    return this.http.delete<any>(url);
+  }
+  addFileToBucket(bucketId: number, fileMetadata: any): Observable<any> {
+    const url = `${this.baseUrl}/${bucketId}/files`;
+    return this.http.post<any>(url, fileMetadata);
+  }
+
+  deleteFileFromBucket(bucketId: number, fileId: number): Observable<any> {
+    const url = `${this.baseUrl}/${bucketId}/files/${fileId}`;
     return this.http.delete<any>(url);
   }
 }
