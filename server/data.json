@@ -16,7 +16,8 @@
         "fileName": "abcdef.txt",
         "lastModified": "2012-04-23T18:25:43.511Z",
         "size": 1232
-      }
+      },
+      {}
     ]
   },
   {
@@ -36,5 +37,26 @@
     "location": "Kranj",
     "storage": 0,
     "files": []
+  },
+  {
+    "id": "a5feaef7-c014-443c-9cff-65d785a2cc06",
+    "name": "aaaaaa",
+    "location": "Other Location",
+    "storage": 0,
+    "files": []
+  },
+  {
+    "id": "07a7d888-d37d-406e-8585-b8cbf5a2a60a",
+    "name": "test_morgan",
+    "location": "Kranj",
+    "storage": 0,
+    "files": [
+      {
+        "id": "0d0f601a-3025-4147-a7ff-41bb9f9f054e",
+        "fileName": "angular-developer_2024_2.pdf",
+        "lastModified": 1715099528953,
+        "size": 98555
+      }
+    ]
   }
 ]

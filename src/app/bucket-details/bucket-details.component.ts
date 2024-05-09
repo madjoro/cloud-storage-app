@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BucketListService } from '../bucket-list/bucket-list.service';
 import { FileListComponent } from '../file-list/file-list.component';
-import { DetailsComponent } from '../details/details.component';
+import { DetailsComponent } from '../details-tab/details.component';
 
 @Component({
   selector: 'app-bucket-details',

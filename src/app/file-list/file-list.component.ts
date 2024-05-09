@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Modal } from 'bootstrap';
+import { BucketListService } from '../bucket-list/bucket-list.service';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-file-list',
@@ -11,15 +13,22 @@ import { Modal } from 'bootstrap';
 })
 export class FileListComponent {
   @Input() files: any[] = [];
+  @Input() bucket: string = '';
   selectedFileIndex: number = -1;
-  modalName: bootstrap.Modal | undefined;
+  modal: bootstrap.Modal | undefined;
+
+  constructor(private bucketListService: BucketListService) {}
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      console.log('File Name:', file.name);
-      console.log('File Size:', file.size);
-      console.log('Last Modified:', file.lastModified);
+      const newFile = {
+        id: uuid.v4(),
+        fileName: file.name,
+        lastModified: file.lastModified,
+        size: file.size,
+      };
+      this.bucketListService.addFileToBucket(this.bucket, newFile);
     }
   }
 
@@ -38,7 +47,13 @@ export class FileListComponent {
     const modalElement = document.getElementById(
       'deleteObjectModal'
     ) as HTMLElement;
-    const modal = new Modal(modalElement);
-    modal.show();
+    this.modal = new Modal(modalElement);
+    this.modal.show();
+  }
+
+  closeModal() {
+    if (this.modal) {
+      this.modal.hide();
+    }
   }
 }

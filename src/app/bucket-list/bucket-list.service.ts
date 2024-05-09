@@ -15,6 +15,8 @@ export class BucketListService {
   }
 
   addBucket(bucket: any): Observable<any> {
+    console.log(bucket);
+
     return this.http.post<any>(this.baseUrl, bucket);
   }
 
@@ -22,12 +24,12 @@ export class BucketListService {
     const url = `${this.baseUrl}/${bucketId}`;
     return this.http.delete<any>(url);
   }
-  addFileToBucket(bucketId: number, fileMetadata: any): Observable<any> {
+  addFileToBucket(bucketId: string, fileMetadata: any): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files`;
-    return this.http.post<any>(url, fileMetadata);
+    return this.http.post<any>(url, JSON.stringify(fileMetadata));
   }
 
-  deleteFileFromBucket(bucketId: number, fileId: number): Observable<any> {
+  deleteFileFromBucket(bucketId: string, fileId: number): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files/${fileId}`;
     return this.http.delete<any>(url);
   }
