@@ -50,7 +50,7 @@ app.delete("/buckets/:id", (req, res) => {
 
 // dump data to file
 function saveDataToFile(data) {
-  fs.writeFileSync("./src/data/buckets.json", JSON.stringify(data, null, 2));
+  fs.writeFileSync("./data.json", JSON.stringify(data, null, 2));
 }
 
 app.listen(PORT, () => {

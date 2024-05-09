@@ -4,8 +4,9 @@
   </div>
 </nav>
 
-<h1>Bucket list</h1>
-<div class="container-fluid">
+<!-- Bucket list -->
+<div class="container-fluid" *ngIf="!selectedBucket">
+  <h1>Bucket list</h1>
   <div>
     <p>All buckets ({{ buckets.length }})</p>
     <button (click)="toggleCreateExpanded()">Create New Bucket</button>
@@ -32,18 +33,15 @@
     </thead>
 
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>abc</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>abc</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>abc</td>
+      <tr *ngFor="let bucket of buckets">
+        <td>{{ bucket.name }}</td>
+        <td>{{ bucket.location }}</td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Bucket details list -->
+<div *ngIf="selectedBucket">
+  <app-bucket-details [bucket]="selectedBucket"></app-bucket-details>
 </div>

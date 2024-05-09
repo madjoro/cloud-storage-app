@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { BucketListService } from './bucket-list.service';
+import { BucketDetailsComponent } from '../bucket-details/bucket-details.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-bucket-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, BucketDetailsComponent],
   templateUrl: './bucket-list.component.html',
   styleUrls: ['./bucket-list.component.css'],
 })
 export class BucketListComponent implements OnInit {
   buckets: any[] = [];
-  selectedBucket: any;
-  createExpanded: boolean = false;
   newBucketName: string = '';
-  selectedLocation: string = ''; // Add a variable to store the selected location
+  selectedLocation: string = '';
+  //toggles
+  selectedBucket: boolean = false;
+  createExpanded: boolean = false;
 
   constructor(private bucketListService: BucketListService) {}
 
@@ -26,7 +28,6 @@ export class BucketListComponent implements OnInit {
   loadBuckets() {
     this.bucketListService.getBuckets().subscribe((data: any[]) => {
       this.buckets = data;
-      console.log(this.buckets);
     });
   }
 
@@ -34,11 +35,20 @@ export class BucketListComponent implements OnInit {
     this.createExpanded = !this.createExpanded;
   }
 
+  toggleSelectedBucket() {
+    this.selectedBucket = !this.selectedBucket;
+  }
+
   createBucket() {
-    // Call a service method to create a new bucket using this.newBucketName and this.selectedLocation
-    // Reset input fields
-    this.newBucketName = '';
-    this.selectedLocation = '';
-    this.createExpanded = false;
+    const newBucket = {
+      name: this.newBucketName,
+      location: this.selectedLocation,
+    };
+    this.bucketListService.addBucket(newBucket).subscribe(() => {
+      this.loadBuckets(); //reload
+      this.newBucketName = '';
+      this.selectedLocation = '';
+      this.createExpanded = false;
+    });
   }
 }
