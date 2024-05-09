@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Modified</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.fileName }}</td>
+        <td>{{ file.lastModified | date }}</td>
+        <td>{{ file.size }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
