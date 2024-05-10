@@ -43,9 +43,9 @@ export class BucketListService {
   }
 
   formatFileSize(size: number): string {
-    const KB = 1024;
-    const MB = KB * 1024;
-    const GB = MB * 1024;
+    const KB = 1000;
+    const MB = KB * 1000;
+    const GB = MB * 1000;
 
     if (size < KB) {
       return size + ' B';

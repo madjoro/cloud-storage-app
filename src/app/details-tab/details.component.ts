@@ -13,11 +13,10 @@ export class DetailsComponent {
   @Input() bucket: any;
   modal: bootstrap.Modal | undefined;
 
-  @Output() toggleEvent = new EventEmitter<void>();
+  @Output() deleteEvent = new EventEmitter<string>();
 
-  emitToggleEvent(): void {
-    console.log('asdasdasd');
-    this.toggleEvent.emit();
+  emitDeleteEvent(id: string) {
+    this.deleteEvent.emit(id);
   }
 
   constructor(private bucketListService: BucketListService) {}
@@ -27,22 +26,8 @@ export class DetailsComponent {
       (acc: number, file: any) => acc + file.size,
       0
     );
-
     const remaining = 5_000_000_000 - totalSize;
-
     return this.bucketListService.formatFileSize(remaining);
-  }
-
-  deleteBucket(id: string) {
-    this.bucketListService.deleteBucket(id).subscribe({
-      next: (response) => {
-        console.log('DELETE request successful:', response);
-        this.emitToggleEvent(); // Emit event after successful deletion
-      },
-      error: (error) => {
-        console.error('Error occurred:', error);
-      },
-    });
   }
 
   openModal() {

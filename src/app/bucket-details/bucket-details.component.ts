@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BucketListService } from '../bucket-list/bucket-list.service';
 import { FileListComponent } from '../file-list/file-list.component';
 import { DetailsComponent } from '../details-tab/details.component';
 
@@ -15,9 +14,14 @@ import { DetailsComponent } from '../details-tab/details.component';
 export class BucketDetailsComponent {
   @Input() bucket: any;
   @Output() toggleEvent = new EventEmitter<void>();
+  @Output() deleteEvent = new EventEmitter<string>();
 
   emitToggleEvent(): void {
     this.toggleEvent.emit();
+  }
+
+  emitDeleteEvent(id: string) {
+    this.deleteEvent.emit(id);
   }
 
   activeTab: string = 'files';

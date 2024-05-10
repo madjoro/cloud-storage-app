@@ -65,11 +65,14 @@ export class FileListComponent {
   }
 
   openModal() {
-    const modalElement = document.getElementById(
-      'deleteObjectModal'
-    ) as HTMLElement;
-    this.modal = new Modal(modalElement);
-    this.modal.show();
+    if (this.selectedFileIndex !== -1) {
+      console.log(this.selectedFileIndex);
+      const modalElement = document.getElementById(
+        'deleteObjectModal'
+      ) as HTMLElement;
+      this.modal = new Modal(modalElement);
+      this.modal.show();
+    }
   }
 
   closeModal() {

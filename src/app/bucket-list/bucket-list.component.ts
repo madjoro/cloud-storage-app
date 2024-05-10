@@ -35,6 +35,41 @@ export class BucketListComponent implements OnInit {
     });
   }
 
+  createBucket() {
+    if (this.newBucketName && this.selectedLocation) {
+      const newBucket = {
+        id: uuid.v4(),
+        name: this.newBucketName,
+        location: this.selectedLocation,
+        files: [],
+      };
+      this.bucketListService.addBucket(newBucket).subscribe(() => {
+        this.loadBuckets();
+      });
+      this.buckets.push(newBucket);
+    }
+    this.newBucketName = '';
+    this.selectedLocation = '';
+    this.createExpanded = false;
+    this.createNewShown = true;
+  }
+
+  deleteBucket(id: string) {
+    this.bucketListService.deleteBucket(id).subscribe({
+      next: (response) => {
+        console.log('DELETE request successful:', response);
+        const index = this.buckets.findIndex((bucket) => bucket.id === id);
+        if (index !== -1) {
+          this.buckets.splice(index, 1);
+        }
+        this.toggleMain();
+      },
+      error: (error) => {
+        console.error('Error occurred:', error);
+      },
+    });
+  }
+
   toggleCreateExpanded() {
     this.createExpanded = !this.createExpanded;
     this.createNewShown = !this.createNewShown;
@@ -47,23 +82,5 @@ export class BucketListComponent implements OnInit {
 
   toggleMain() {
     this.selectedBucket = !this.selectedBucket;
-  }
-
-  createBucket() {
-    if (this.newBucketName && this.selectedLocation) {
-      const newBucket = {
-        id: uuid.v4(),
-        name: this.newBucketName,
-        location: this.selectedLocation,
-        files: [],
-      };
-      this.bucketListService.addBucket(newBucket).subscribe(() => {
-        this.loadBuckets(); //reload
-      });
-    }
-    this.newBucketName = '';
-    this.selectedLocation = '';
-    this.createExpanded = false;
-    this.createNewShown = true;
   }
 }

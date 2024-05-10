@@ -45,7 +45,10 @@
     </div>
 
     <div *ngIf="activeTab === 'details'">
-      <app-details [bucket]="bucket"></app-details>
+      <app-details
+        [bucket]="bucket"
+        (deleteEvent)="emitDeleteEvent($event)"
+      ></app-details>
     </div>
   </div>
 </div>

@@ -50,6 +50,7 @@
 <div *ngIf="selectedBucket">
   <app-bucket-details
     [bucket]="bucketDetailed"
+    (deleteEvent)="deleteBucket($event)"
     (toggleEvent)="toggleMain()"
   ></app-bucket-details>
 </div>

@@ -5,6 +5,7 @@
       type="button"
       class="btn btn-danger"
       (click)="openModal()"
+      [disabled]="selectedFileIndex === -1"
       data-bs-toggle="modal"
       data-bs-target="#deleteObjectModal"
     >
