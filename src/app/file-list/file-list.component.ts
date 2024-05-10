@@ -28,7 +28,14 @@ export class FileListComponent {
         lastModified: file.lastModified,
         size: file.size,
       };
-      this.bucketListService.addFileToBucket(this.bucket, newFile);
+      this.bucketListService.addFileToBucket(this.bucket, newFile).subscribe({
+        next: (response) => {
+          console.log('PUT request successful:', response);
+        },
+        error: (error) => {
+          console.error('Error occurred:', error);
+        },
+      });
     }
   }
 
@@ -40,6 +47,19 @@ export class FileListComponent {
     if (index !== -1) {
       const selectedFile = this.files[this.selectedFileIndex];
       console.log('Selected File:', selectedFile);
+      this.bucketListService
+        .deleteFileFromBucket(
+          this.bucket,
+          this.files[this.selectedFileIndex].id
+        )
+        .subscribe({
+          next: (response) => {
+            console.log('DELETE request successful:', response);
+          },
+          error: (error) => {
+            console.error('Error occurred:', error);
+          },
+        });
     }
   }
 
@@ -54,6 +74,10 @@ export class FileListComponent {
   closeModal() {
     if (this.modal) {
       this.modal.hide();
+      document.body.classList.remove('modal-open');
+      const backdropElements: NodeListOf<HTMLElement> =
+        document.querySelectorAll('.modal-backdrop');
+      backdropElements.forEach((element) => element.remove());
     }
   }
 }

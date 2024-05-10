@@ -6,30 +6,38 @@
     "storage": 123,
     "files": [
       {
-        "id": "22cc5dac-9e9b-4dfe-af10-c8dea70cfb27",
-        "fileName": "abc.txt",
-        "lastModified": "2012-04-23T18:25:43.511Z",
-        "size": 123
-      },
-      {
         "id": "23cc5dac-9e9b-4dfe-af10-c8dea70cfb27",
         "fileName": "abcdef.txt",
         "lastModified": "2012-04-23T18:25:43.511Z",
         "size": 1232
       },
-      {}
+      {
+        "id": "c78beef2-1347-4352-aabb-e8c7fbd6618d",
+        "fileName": "racun_24041333170.pdf",
+        "lastModified": 1714999654711,
+        "size": 74287
+      },
+      {
+        "id": "6ef1271d-601b-423f-a203-ca6c35e2fefc",
+        "fileName": "wireframes.pdf",
+        "lastModified": 1715099530301,
+        "size": 472566
+      }
     ]
-  },
-  {
-    "name": "MegaStorage",
-    "location": "Kranj"
   },
   {
     "id": "1b536bb6-b89f-4c13-bd80-5d028097667a",
     "name": "TestStorage",
     "location": "Kranj",
     "storage": 0,
-    "files": []
+    "files": [
+      {
+        "id": "21eb2a4c-cf06-4960-a54f-3d4c2a20846c",
+        "fileName": "angular-developer_2024_2.pdf",
+        "lastModified": 1715099528953,
+        "size": 98555
+      }
+    ]
   },
   {
     "id": "ce1eb43a-f515-41b6-bd5c-d3c2ebd0a880",
