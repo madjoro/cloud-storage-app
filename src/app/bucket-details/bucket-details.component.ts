@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BucketListService } from '../bucket-list/bucket-list.service';
@@ -14,13 +14,14 @@ import { DetailsComponent } from '../details-tab/details.component';
 })
 export class BucketDetailsComponent {
   @Input() bucket: any;
-  activeTab: string = 'files';
+  @Output() toggleEvent = new EventEmitter<void>();
 
-  constructor(private bucketListService: BucketListService) {}
-
-  deleteBucket() {
-    this.bucketListService.deleteBucket(this.bucket.id).subscribe(() => {});
+  emitToggleEvent(): void {
+    console.log('asdasdasd');
+    this.toggleEvent.emit();
   }
+
+  activeTab: string = 'files';
 
   toggleTab(tab: string) {
     this.activeTab = tab;

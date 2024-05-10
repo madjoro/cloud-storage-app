@@ -18,7 +18,7 @@ export class BucketListService {
     return this.http.post<any>(this.baseUrl, bucket);
   }
 
-  deleteBucket(bucketId: number): Observable<any> {
+  deleteBucket(bucketId: string): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}`;
     return this.http.delete<any>(url);
   }
@@ -30,5 +30,21 @@ export class BucketListService {
   deleteFileFromBucket(bucketId: string, fileId: string): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files/${fileId}`;
     return this.http.delete<any>(url);
+  }
+
+  formatFileSize(size: number): string {
+    const KB = 1024;
+    const MB = KB * 1024;
+    const GB = MB * 1024;
+
+    if (size < KB) {
+      return size + ' B';
+    } else if (size < MB) {
+      return (size / KB).toFixed(2) + ' KB';
+    } else if (size < GB) {
+      return (size / MB).toFixed(2) + ' MB';
+    } else {
+      return (size / GB).toFixed(2) + ' GB';
+    }
   }
 }

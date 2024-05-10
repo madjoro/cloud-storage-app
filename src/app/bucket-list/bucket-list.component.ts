@@ -21,6 +21,7 @@ export class BucketListComponent implements OnInit {
   //toggles
   selectedBucket: boolean = false;
   createExpanded: boolean = false;
+  createNewShown: boolean = true;
 
   constructor(private bucketListService: BucketListService) {}
 
@@ -36,6 +37,7 @@ export class BucketListComponent implements OnInit {
 
   toggleCreateExpanded() {
     this.createExpanded = !this.createExpanded;
+    this.createNewShown = !this.createNewShown;
   }
 
   toggleSelectedBucket(bucket: {}) {
@@ -43,12 +45,15 @@ export class BucketListComponent implements OnInit {
     this.bucketDetailed = bucket;
   }
 
+  toggleMain() {
+    this.selectedBucket = !this.selectedBucket;
+  }
+
   createBucket() {
     const newBucket = {
       id: uuid.v4(),
       name: this.newBucketName,
       location: this.selectedLocation,
-      storage: 0,
       files: [],
     };
     this.bucketListService.addBucket(newBucket).subscribe(() => {
@@ -56,6 +61,7 @@ export class BucketListComponent implements OnInit {
       this.newBucketName = '';
       this.selectedLocation = '';
       this.createExpanded = false;
+      this.createNewShown = true;
     });
   }
 }

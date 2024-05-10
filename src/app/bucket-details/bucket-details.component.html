@@ -1,5 +1,8 @@
 <div class="container-fluid">
   <h1>{{ bucket.name }}</h1>
+  <button type="button" class="btn btn-link" (click)="emitToggleEvent()">
+    <i class="bi bi-arrow-bar-left"></i>
+  </button>
 
   <!-- nav tabs-->
   <div class="container" id="tabs">
@@ -42,7 +45,7 @@
     </div>
 
     <div *ngIf="activeTab === 'details'">
-      <app-details></app-details>
+      <app-details [bucket]="bucket"></app-details>
     </div>
   </div>
 </div>

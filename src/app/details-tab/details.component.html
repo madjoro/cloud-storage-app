@@ -1,4 +1,72 @@
-<button>Delete Bucket</button>
-<div class="tab-content">
-  <div class="tab-pane active" id="details-tab"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="tab-content">
+        <div class="tab-pane active" id="details-tab">
+          <p>
+            <strong class="text-end">Bucket name:</strong> {{ bucket.name }}
+          </p>
+          <p>
+            <strong class="text-end">Location:</strong> {{ bucket.location }}
+          </p>
+          <p>
+            <strong class="text-end">Storage size:</strong>
+            {{ calcBucketSize(bucket) }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="openModal()"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteObjectModal"
+      >
+        Delete Bucket
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- bucket deletion modal -->
+<div
+  class="modal fade"
+  id="deleteObjectModal"
+  tabindex="-1"
+  aria-labelledby="deleteObjectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">Do you really want to delete this bucket?</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="[deleteBucket(bucket.id), closeModal()]"
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -9,7 +9,9 @@
   <h1>Bucket list</h1>
   <div>
     <p>All buckets ({{ buckets.length }})</p>
-    <button (click)="toggleCreateExpanded()">Create New Bucket</button>
+    <button *ngIf="createNewShown" (click)="toggleCreateExpanded()">
+      Create New Bucket
+    </button>
     <div *ngIf="createExpanded">
       <input
         type="text"
@@ -18,9 +20,11 @@
       />
       <select [(ngModel)]="selectedLocation">
         <option value="Kranj">Kranj</option>
-        <option value="Other Location">Other Location</option>
+        <option value="Ljubljana">Ljubljana</option>
+        <option value="Maribor">Maribor</option>
+        <option value="Other">Other</option>
       </select>
-      <button (click)="createBucket()">Create Bucket</button>
+      <button (click)="[createBucket()]">Create Bucket</button>
     </div>
   </div>
 
@@ -42,5 +46,8 @@
 
 <!-- Bucket details list -->
 <div *ngIf="selectedBucket">
-  <app-bucket-details [bucket]="bucketDetailed"></app-bucket-details>
+  <app-bucket-details
+    [bucket]="bucketDetailed"
+    (toggleEvent)="toggleMain()"
+  ></app-bucket-details>
 </div>
