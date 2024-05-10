@@ -1,0 +1,8 @@
+.arrow-button {
+  color: black;
+  transition: color 0.2s;
+}
+
+.arrow-button:hover {
+  color: red;
+}

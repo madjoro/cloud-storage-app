@@ -5,28 +5,57 @@
 </nav>
 
 <!-- Bucket list -->
-<div class="container-fluid" *ngIf="!selectedBucket">
-  <h1>Bucket list</h1>
-  <div>
-    <p>All buckets ({{ buckets.length }})</p>
-    <button *ngIf="createNewShown" (click)="toggleCreateExpanded()">
+<div class="container-fluid bg-body-tertiary" *ngIf="!selectedBucket">
+  <h2>Bucket list</h2>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <p class="mb-0">
+      {{
+        createExpanded
+          ? "Create New Bucket"
+          : "All buckets (" + buckets.length + ")"
+      }}
+    </p>
+    <button
+      *ngIf="createNewShown"
+      class="btn btn-secondary"
+      (click)="toggleCreateExpanded()"
+    >
       Create New Bucket
     </button>
-    <div *ngIf="createExpanded">
-      <p>Bucket Name*</p>
-      <input
-        type="text"
-        placeholder="Enter bucket name"
-        [(ngModel)]="newBucketName"
-      />
-      <p>Bucket Location*</p>
-      <select [(ngModel)]="selectedLocation">
-        <option value="Kranj">Kranj</option>
-        <option value="Ljubljana">Ljubljana</option>
-        <option value="Maribor">Maribor</option>
-        <option value="Other">Other</option>
-      </select>
-      <button (click)="[createBucket()]">Create Bucket</button>
+  </div>
+
+  <div *ngIf="createExpanded" class="row mb-3">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="bucketName" class="form-label">Bucket Name*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bucketName"
+          placeholder="Enter bucket name"
+          [(ngModel)]="newBucketName"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="bucketLocation" class="form-label">Bucket Location*</label>
+        <select
+          class="form-select"
+          id="bucketLocation"
+          [(ngModel)]="selectedLocation"
+        >
+          <option value="Kranj">Kranj</option>
+          <option value="Ljubljana">Ljubljana</option>
+          <option value="Maribor">Maribor</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-secondary" (click)="createBucket()">
+        Create Bucket
+      </button>
     </div>
   </div>
 

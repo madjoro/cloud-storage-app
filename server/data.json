@@ -1,28 +1,16 @@
 [
   {
-    "id": "8948bdcb-6967-4e52-8336-d5fbc972a64b",
-    "name": "Test123",
-    "location": "Maribor",
-    "files": [
-      {
-        "id": "1b9f3f13-e0f1-4add-bb31-12c6d478c70b",
-        "fileName": "angular-developer_2024_2.pdf",
-        "dateModified": 1715099528953,
-        "size": 98555
-      },
-      {
-        "id": "48552842-3408-40dc-a2b6-e5c614807268",
-        "fileName": "Postman-win64-Setup.exe",
-        "dateModified": 1715269492117,
-        "size": 140171312
-      }
-    ]
-  },
-  {
     "id": "6646657c-0593-498b-92fa-33aa170df96d",
     "name": "sadasd",
     "location": "Maribor",
-    "files": []
+    "files": [
+      {
+        "id": "d832a6d6-9e13-4633-b66c-c3070f76addd",
+        "fileName": "angular-developer_2024_2.pdf",
+        "dateModified": 1715099528953,
+        "size": 98555
+      }
+    ]
   },
   {
     "id": "0f3bb15e-c626-4c73-bb5b-5e279f266bff",
@@ -55,5 +43,11 @@
         "size": 74287
       }
     ]
+  },
+  {
+    "id": "47e3c457-4058-4761-bf3c-afeb97214d95",
+    "name": "111111",
+    "location": "Ljubljana",
+    "files": []
   }
 ]

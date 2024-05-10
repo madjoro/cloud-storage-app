@@ -1,8 +1,18 @@
 <div class="container-fluid">
-  <h1>{{ bucket.name }}</h1>
-  <button type="button" class="btn btn-link" (click)="emitToggleEvent()">
-    <i class="bi bi-arrow-left"></i>
-  </button>
+  <div class="row align-items-center mb-4">
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-link arrow-button"
+        (click)="emitToggleEvent()"
+      >
+        <i class="bi bi-arrow-left"></i>
+      </button>
+    </div>
+    <div class="col">
+      <h2>{{ bucket.name }}</h2>
+    </div>
+  </div>
 
   <!-- nav tabs-->
   <div class="container" id="tabs">
@@ -10,7 +20,6 @@
       <li class="nav-item" role="presentation">
         <button
           [ngClass]="{ active: activeTab === 'files' }"
-          data-toggle="tab"
           (click)="toggleTab('files')"
           class="nav-link active"
           id="files-tab"
@@ -24,7 +33,6 @@
       <li class="nav-item" role="presentation">
         <button
           [ngClass]="{ active: activeTab === 'details' }"
-          data-toggle="tab"
           (click)="toggleTab('details')"
           class="nav-link"
           id="details-tab"
