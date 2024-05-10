@@ -17,7 +17,6 @@ export class BucketDetailsComponent {
   @Output() toggleEvent = new EventEmitter<void>();
 
   emitToggleEvent(): void {
-    console.log('asdasdasd');
     this.toggleEvent.emit();
   }
 

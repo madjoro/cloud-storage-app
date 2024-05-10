@@ -25,7 +25,7 @@ export class FileListComponent {
       const newFile = {
         id: uuid.v4(),
         fileName: file.name,
-        lastModified: file.lastModified,
+        dateModified: file.lastModified,
         size: file.size,
       };
       this.bucketListService.addFileToBucket(this.bucket, newFile).subscribe({

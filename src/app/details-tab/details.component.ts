@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BucketListService } from '../bucket-list/bucket-list.service';
 import { Modal } from 'bootstrap';
 
@@ -12,6 +12,13 @@ import { Modal } from 'bootstrap';
 export class DetailsComponent {
   @Input() bucket: any;
   modal: bootstrap.Modal | undefined;
+
+  @Output() toggleEvent = new EventEmitter<void>();
+
+  emitToggleEvent(): void {
+    console.log('asdasdasd');
+    this.toggleEvent.emit();
+  }
 
   constructor(private bucketListService: BucketListService) {}
 
@@ -30,6 +37,7 @@ export class DetailsComponent {
     this.bucketListService.deleteBucket(id).subscribe({
       next: (response) => {
         console.log('DELETE request successful:', response);
+        this.emitToggleEvent(); // Emit event after successful deletion
       },
       error: (error) => {
         console.error('Error occurred:', error);
