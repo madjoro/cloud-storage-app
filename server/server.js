@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const cors = require("cors");
 const path = require("path");
-const morgan = require("morgan");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,27 +13,6 @@ app.use(cors());
 const dataPath = path.resolve(__dirname, "data.json");
 
 let buckets = require(dataPath);
-
-const customFormat = (tokens, req, res) => {
-  return JSON.stringify({
-    method: tokens.method(req, res),
-    url: tokens.url(req, res),
-    status: tokens.status(req, res),
-    requestHeaders: req.headers,
-    requestBody: req.body,
-    responseHeaders: res.getHeaders(),
-    responseBody: res.body,
-  });
-};
-
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, "access.log"),
-  {
-    flags: "a",
-  }
-);
-
-app.use(morgan(customFormat, { stream: accessLogStream }));
 
 // endpoints --------------------------------------
 
