@@ -5,13 +5,19 @@
     "location": "Kranj",
     "files": [
       {
-        "id": "21eb2a4c-cf06-4960-a54f-3d4c2a20846c",
+        "id": "96744f76-b7f2-4203-b348-61b461ba03f1",
         "fileName": "angular-developer_2024_2.pdf",
         "lastModified": 1715099528953,
         "size": 98555
       },
       {
-        "id": "96744f76-b7f2-4203-b348-61b461ba03f1",
+        "id": "46b42589-548f-46b4-9531-1d8f4a0c2632",
+        "fileName": "angular-developer_2024_2.pdf",
+        "lastModified": 1715099528953,
+        "size": 98555
+      },
+      {
+        "id": "628bc436-31aa-4511-86aa-e7fa225d32c5",
         "fileName": "angular-developer_2024_2.pdf",
         "lastModified": 1715099528953,
         "size": 98555
@@ -48,5 +54,18 @@
     "name": "Test123",
     "location": "Maribor",
     "files": []
+  },
+  {
+    "id": "b5b03274-6f1d-43ea-ae59-99ea7940baf9",
+    "name": "asdasd",
+    "location": "Ljubljana",
+    "files": [
+      {
+        "id": "f3422421-4f19-47b8-9f16-fe763e50bb52",
+        "fileName": "angular-developer_2024_2.pdf",
+        "lastModified": 1715099528953,
+        "size": 98555
+      }
+    ]
   }
 ]

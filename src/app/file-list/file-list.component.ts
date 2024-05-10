@@ -30,6 +30,7 @@ export class FileListComponent {
       };
       this.bucketListService.addFileToBucket(this.bucket, newFile).subscribe({
         next: (response) => {
+          this.files.push(newFile);
           console.log('PUT request successful:', response);
         },
         error: (error) => {
@@ -45,8 +46,6 @@ export class FileListComponent {
 
   deleteObject(index: number) {
     if (index !== -1) {
-      const selectedFile = this.files[this.selectedFileIndex];
-      console.log('Selected File:', selectedFile);
       this.bucketListService
         .deleteFileFromBucket(
           this.bucket,
@@ -54,6 +53,8 @@ export class FileListComponent {
         )
         .subscribe({
           next: (response) => {
+            this.files.splice(this.selectedFileIndex, 1);
+            this.selectedFileIndex = -1;
             console.log('DELETE request successful:', response);
           },
           error: (error) => {

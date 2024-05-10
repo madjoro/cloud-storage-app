@@ -50,18 +50,20 @@ export class BucketListComponent implements OnInit {
   }
 
   createBucket() {
-    const newBucket = {
-      id: uuid.v4(),
-      name: this.newBucketName,
-      location: this.selectedLocation,
-      files: [],
-    };
-    this.bucketListService.addBucket(newBucket).subscribe(() => {
-      this.loadBuckets(); //reload
-      this.newBucketName = '';
-      this.selectedLocation = '';
-      this.createExpanded = false;
-      this.createNewShown = true;
-    });
+    if (this.newBucketName && this.selectedLocation) {
+      const newBucket = {
+        id: uuid.v4(),
+        name: this.newBucketName,
+        location: this.selectedLocation,
+        files: [],
+      };
+      this.bucketListService.addBucket(newBucket).subscribe(() => {
+        this.loadBuckets(); //reload
+      });
+    }
+    this.newBucketName = '';
+    this.selectedLocation = '';
+    this.createExpanded = false;
+    this.createNewShown = true;
   }
 }

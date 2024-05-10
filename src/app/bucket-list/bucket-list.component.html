@@ -13,11 +13,13 @@
       Create New Bucket
     </button>
     <div *ngIf="createExpanded">
+      <p>Bucket Name*</p>
       <input
         type="text"
         placeholder="Enter bucket name"
         [(ngModel)]="newBucketName"
       />
+      <p>Bucket Location*</p>
       <select [(ngModel)]="selectedLocation">
         <option value="Kranj">Kranj</option>
         <option value="Ljubljana">Ljubljana</option>

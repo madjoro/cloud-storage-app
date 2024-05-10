@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BucketListService {
   private baseUrl = 'http://localhost:3000/buckets';
+  private bucketsSubject = new BehaviorSubject<any[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadBuckets();
+  }
+
+  private loadBuckets(): void {
+    this.http.get<any[]>(this.baseUrl).subscribe((buckets: any[]) => {
+      this.bucketsSubject.next(buckets);
+    });
+  }
 
   getBuckets(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+    return this.bucketsSubject.asObservable();
   }
 
   addBucket(bucket: any): Observable<any> {
@@ -22,6 +31,7 @@ export class BucketListService {
     const url = `${this.baseUrl}/${bucketId}`;
     return this.http.delete<any>(url);
   }
+
   addFileToBucket(bucketId: string, fileMetadata: any): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files`;
     return this.http.post<any>(url, fileMetadata);
