@@ -23,6 +23,7 @@ export class BucketListComponent implements OnInit {
   selectedBucket: boolean = false;
   createExpanded: boolean = false;
   createNewShown: boolean = true;
+  createErrorShown: boolean = false;
 
   constructor(private bucketListService: BucketListService) {}
 
@@ -53,11 +54,10 @@ export class BucketListComponent implements OnInit {
         this.loadBuckets();
       });
       this.buckets.push(newBucket);
+      this.toggleDefault();
+    } else {
+      this.createErrorShown = true;
     }
-    this.newBucketName = '';
-    this.selectedLocation = '';
-    this.createExpanded = false;
-    this.createNewShown = true;
   }
 
   deleteBucket(id: string) {
@@ -77,6 +77,14 @@ export class BucketListComponent implements OnInit {
   }
 
   // toggle switches to show/hide UI elements
+  toggleDefault() {
+    this.createErrorShown = false;
+    this.createExpanded = false;
+    this.createNewShown = true;
+    this.newBucketName = '';
+    this.selectedLocation = '';
+  }
+
   toggleCreateExpanded() {
     this.createExpanded = !this.createExpanded;
     this.createNewShown = !this.createNewShown;
@@ -85,6 +93,7 @@ export class BucketListComponent implements OnInit {
   toggleSelectedBucket(bucket: {}) {
     this.selectedBucket = !this.selectedBucket;
     this.bucketDetailed = bucket;
+    this.toggleDefault();
   }
 
   toggleMain() {
