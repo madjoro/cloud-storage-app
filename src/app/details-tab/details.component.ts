@@ -21,6 +21,7 @@ export class DetailsComponent {
 
   constructor(private bucketListService: BucketListService) {}
 
+  // assumes max bucket size of 5GB, subtracts sum of current file sizes
   calcBucketSize(bucket: any) {
     const totalSize = bucket.files.reduce(
       (acc: number, file: any) => acc + file.size,

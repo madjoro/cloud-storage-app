@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FileListComponent } from '../file-list/file-list.component';
 import { DetailsComponent } from '../details-tab/details.component';
 

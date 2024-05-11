@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { Bucket, File } from '../../interfaces/buckets';
 
 @Injectable({
   providedIn: 'root',
@@ -13,35 +14,57 @@ export class BucketListService {
     this.loadBuckets();
   }
 
-  private loadBuckets(): void {
-    this.http.get<any[]>(this.baseUrl).subscribe((buckets: any[]) => {
-      this.bucketsSubject.next(buckets);
-    });
+  handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+      return throwError(() => new Error('Network error occurred.'));
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+      return throwError(() => new Error('Something went wrong on the server.'));
+    }
   }
 
-  getBuckets(): Observable<any[]> {
+  // data file related methods
+  loadBuckets(): void {
+    this.http
+      .get<Bucket[]>(this.baseUrl)
+      .pipe(catchError(this.handleError))
+      .subscribe((buckets: Bucket[]) => {
+        this.bucketsSubject.next(buckets);
+      });
+  }
+
+  getBuckets(): Observable<Bucket[]> {
     return this.bucketsSubject.asObservable();
   }
 
-  addBucket(bucket: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, bucket);
+  addBucket(bucket: Bucket): Observable<any> {
+    return this.http
+      .post<Bucket>(this.baseUrl, bucket)
+      .pipe(catchError(this.handleError));
   }
 
   deleteBucket(bucketId: string): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}`;
-    return this.http.delete<any>(url);
+    return this.http.delete<any>(url).pipe(catchError(this.handleError));
   }
 
-  addFileToBucket(bucketId: string, fileMetadata: any): Observable<any> {
+  addFileToBucket(bucketId: string, fileMetadata: File): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files`;
-    return this.http.post<any>(url, fileMetadata);
+    return this.http
+      .post<any>(url, fileMetadata)
+      .pipe(catchError(this.handleError));
   }
 
   deleteFileFromBucket(bucketId: string, fileId: string): Observable<any> {
     const url = `${this.baseUrl}/${bucketId}/files/${fileId}`;
-    return this.http.delete<any>(url);
+    return this.http.delete<any>(url).pipe(catchError(this.handleError));
   }
 
+  // formatting and shortening file sizes
   formatFileSize(size: number): string {
     const KB = 1000;
     const MB = KB * 1000;

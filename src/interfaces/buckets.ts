@@ -1,11 +1,11 @@
-interface Bucket {
+export interface Bucket {
   id: string;
   name: string;
   location: string;
   files: File[];
 }
 
-interface File {
+export interface File {
   id: string;
   fileName: string;
   dateModified: number;

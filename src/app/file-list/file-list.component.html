@@ -47,7 +47,7 @@
       >
         <td>{{ file.fileName }}</td>
         <td>{{ file.dateModified | date }}</td>
-        <td>{{ file.size }}</td>
+        <td>{{ formatFileSize(file.size) }}</td>
       </tr>
     </tbody>
   </table>

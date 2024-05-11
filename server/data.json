@@ -1,11 +1,17 @@
 [
   {
-    "id": "6646657c-0593-498b-92fa-33aa170df96d",
-    "name": "sadasd",
-    "location": "Maribor",
+    "id": "d63020b1-9bfe-4f43-9728-e2371475cbcf",
+    "name": "KFC Ultra Bucket",
+    "location": "Other",
     "files": [
       {
-        "id": "d832a6d6-9e13-4633-b66c-c3070f76addd",
+        "id": "e5b9e004-16f3-4796-99c4-a991c1f7cf09",
+        "fileName": "angular-developer_2024_2.pdf",
+        "dateModified": 1715099528953,
+        "size": 98555
+      },
+      {
+        "id": "bd528969-b078-477d-b352-96f2bab07fda",
         "fileName": "angular-developer_2024_2.pdf",
         "dateModified": 1715099528953,
         "size": 98555
@@ -13,41 +19,41 @@
     ]
   },
   {
-    "id": "0f3bb15e-c626-4c73-bb5b-5e279f266bff",
-    "name": "123",
+    "id": "6a6aa0bb-04ae-43fa-826a-91b51ad2a0d9",
+    "name": "Bucket Nantucket",
+    "location": "Kranj",
+    "files": [
+      {
+        "id": "cb2df2b9-3206-4e30-902f-489a8c4fe6d6",
+        "fileName": "index.html",
+        "dateModified": 1706893173772,
+        "size": 4575
+      }
+    ]
+  },
+  {
+    "id": "9149bcca-60ac-468e-bf05-e3bcd55d3904",
+    "name": "Chucket",
     "location": "Other",
     "files": []
   },
   {
-    "id": "10f09f5e-f2b9-4257-8276-78d10e6107b9",
-    "name": "eeee",
-    "location": "Kranj",
+    "id": "2dae98fb-3588-439f-ad0b-35a184947ee6",
+    "name": "SuperCloud",
+    "location": "Maribor",
     "files": [
       {
-        "id": "6dbeccbe-0aa0-4784-971b-a994301a6c21",
-        "fileName": "racun_24041333170.pdf",
-        "dateModified": 1714999654711,
-        "size": 74287
-      }
-    ]
-  },
-  {
-    "id": "72cb2fc3-69db-4de8-a5c6-8e663aa3ef99",
-    "name": "sadasd",
-    "location": "Ljubljana",
-    "files": [
+        "id": "97ac0210-e674-489c-b0ec-8123864c736c",
+        "fileName": "text2.html",
+        "dateModified": 1706890044714,
+        "size": 1238
+      },
       {
-        "id": "4771dd18-a1f7-465b-bb25-6f491d4853b4",
-        "fileName": "racun_24041333170.pdf",
-        "dateModified": 1714999654711,
-        "size": 74287
+        "id": "170fef4e-ff75-4670-8142-eee0b5e9f847",
+        "fileName": "angular-developer_2024_2.pdf",
+        "dateModified": 1715099528953,
+        "size": 98555
       }
     ]
-  },
-  {
-    "id": "47e3c457-4058-4761-bf3c-afeb97214d95",
-    "name": "111111",
-    "location": "Ljubljana",
-    "files": []
   }
 ]

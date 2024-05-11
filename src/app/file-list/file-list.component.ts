@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Modal } from 'bootstrap';
 import { BucketListService } from '../bucket-list/bucket-list.service';
 import * as uuid from 'uuid';
+import { File as FileData } from '../../interfaces/buckets';
 
 @Component({
   selector: 'app-file-list',
@@ -12,13 +13,14 @@ import * as uuid from 'uuid';
   styleUrl: './file-list.component.css',
 })
 export class FileListComponent {
-  @Input() files: any[] = [];
+  @Input() files: FileData[] = [];
   @Input() bucket: string = '';
   selectedFileIndex: number = -1;
   modal: bootstrap.Modal | undefined;
 
   constructor(private bucketListService: BucketListService) {}
 
+  // file metadata is uploaded to server after user selection of file
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -42,6 +44,10 @@ export class FileListComponent {
 
   selectFile(index: number) {
     this.selectedFileIndex = index;
+  }
+
+  formatFileSize(size: number): string {
+    return this.bucketListService.formatFileSize(size);
   }
 
   deleteObject(index: number) {

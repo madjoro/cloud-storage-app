@@ -4,6 +4,7 @@ import { BucketDetailsComponent } from '../bucket-details/bucket-details.compone
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as uuid from 'uuid';
+import { Bucket } from '../../interfaces/buckets';
 
 @Component({
   selector: 'app-bucket-list',
@@ -13,10 +14,10 @@ import * as uuid from 'uuid';
   styleUrls: ['./bucket-list.component.css'],
 })
 export class BucketListComponent implements OnInit {
-  buckets: any[] = [];
+  buckets: Bucket[] = [];
   newBucketName: string = '';
   selectedLocation: string = '';
-  bucketDetailed: {} = {};
+  bucketDetailed: Bucket | {} = {};
 
   //toggles
   selectedBucket: boolean = false;
@@ -29,9 +30,14 @@ export class BucketListComponent implements OnInit {
     this.loadBuckets();
   }
 
-  loadBuckets() {
-    this.bucketListService.getBuckets().subscribe((data: any[]) => {
-      this.buckets = data;
+  private loadBuckets(): void {
+    this.bucketListService.getBuckets().subscribe({
+      next: (data: Bucket[]) => {
+        this.buckets = data;
+      },
+      error: (error) => {
+        console.error('Error loading buckets:', error);
+      },
     });
   }
 
@@ -70,6 +76,7 @@ export class BucketListComponent implements OnInit {
     });
   }
 
+  // toggle switches to show/hide UI elements
   toggleCreateExpanded() {
     this.createExpanded = !this.createExpanded;
     this.createNewShown = !this.createNewShown;
